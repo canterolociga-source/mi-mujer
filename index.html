@@ -3,157 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mi Mujer 🩵</title>
+<title>Nuestra Historia 🩵</title>
 <style>
-:root{--blue:#72d2ef;--deep:#102934;--soft:#e9f9ff;--muted:#5f7b85}
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--soft);color:var(--deep);overflow:hidden}
-.app{height:100svh;position:relative}
-.slide{position:absolute;inset:0;display:grid;place-items:center;padding:72px 24px 110px;text-align:center;opacity:0;transform:translateX(70px);pointer-events:none;transition:opacity .55s ease,transform .55s ease;background:radial-gradient(circle at 50% 20%,#fff 0 8%,transparent 35%),linear-gradient(145deg,#d4f5ff,#f9fdff)}
-.slide.active{opacity:1;transform:translateX(0);pointer-events:auto;z-index:2}
-.slide.exit-left{transform:translateX(-70px)}
-.content{width:min(820px,100%);max-height:calc(100svh - 180px);overflow:auto;padding:12px 8px}
-.tag{display:inline-block;padding:9px 16px;border-radius:999px;background:#ffffffc9;font-size:.85rem;font-weight:700}
-.heart{font-size:clamp(3.5rem,10vw,5.8rem);margin:12px 0;animation:pulse 1.8s infinite}
-h1{font-size:clamp(3.8rem,12vw,7.5rem);letter-spacing:-.07em;margin:0 0 12px}
-h2{font-size:clamp(2.4rem,7vw,4.5rem);letter-spacing:-.055em;margin:8px 0 20px}
-p{font-size:clamp(1rem,2.2vw,1.2rem);line-height:1.75;color:#38545e;margin:10px auto;max-width:720px}
-.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:800;color:#438da8}
-.btn{border:0;border-radius:999px;padding:15px 25px;background:var(--deep);color:#fff;font-size:1rem;font-weight:800;cursor:pointer;transition:.2s}
-.btn:hover{transform:translateY(-2px)}
-.btn.secondary{background:#fff;color:var(--deep);box-shadow:0 5px 18px #4f90a522}
-.controls{position:fixed;left:0;right:0;bottom:28px;z-index:20;display:flex;align-items:center;justify-content:center;gap:14px;padding:0 20px}
-.dots{position:fixed;top:22px;left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:8px}
-.dot{width:8px;height:8px;border-radius:50%;background:#9bcad8;transition:.25s}.dot.active{width:26px;border-radius:99px;background:#2e7f9a}
-.counter{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:28px auto;max-width:720px}
-.unit{background:#ffffffd1;border-radius:22px;padding:20px 8px;box-shadow:0 12px 30px #5795aa1a}
-.num{display:block;font-size:clamp(1.8rem,5vw,3.4rem);font-weight:900}.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
-.timeline{max-width:680px;margin:25px auto;text-align:left;border-left:2px solid #9cdeef;padding-left:25px}
-.event{position:relative;padding:0 0 22px}.event:before{content:"";position:absolute;width:14px;height:14px;border-radius:50%;background:var(--blue);left:-33px;top:4px}
-.date{font-weight:800;color:#438da5}.event h3{margin:5px 0;font-size:1.15rem}.event p{margin:0;max-width:none;font-size:.95rem}
-.letter{background:#fff;border-radius:28px;padding:28px;text-align:left;box-shadow:0 18px 55px #5d9bad1c}.letter p{max-width:none}.opening{font-size:1.35rem;font-weight:800;color:#3383a0}
-.memories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:700px;margin:auto}.memory{background:linear-gradient(145deg,#fff,#e9faff);border-radius:22px;padding:20px;text-align:left;min-height:150px}.memory i{font-style:normal;font-size:1.8rem}.memory h3{margin:8px 0}.memory p{font-size:.9rem;margin:0}
-.secret{display:none;margin:22px auto 0;max-width:650px;background:var(--deep);color:#fff;border-radius:26px;padding:26px}.secret p{color:#e8f9ff}
-@keyframes pulse{50%{transform:scale(1.1)}}
-@media(max-width:560px){.counter{grid-template-columns:repeat(2,1fr)}.memories{grid-template-columns:1fr}.slide{padding-top:58px}}
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+:root{--bg:#071c25;--bg2:#0d2b36;--blue:#79d8f3;--blue2:#2aa8cf;--text:#f4fbfd;--muted:#aac2ca;--card:rgba(255,255,255,.07);--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+body{overflow:hidden}.app{height:100svh;position:relative;overflow:hidden}
+.screen{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:32px 22px;opacity:0;transform:translateY(18px) scale(.99);pointer-events:none;transition:.55s ease;background:radial-gradient(circle at 50% 15%,rgba(86,194,227,.18),transparent 28%),radial-gradient(circle at 15% 80%,rgba(36,126,155,.15),transparent 28%),linear-gradient(135deg,var(--bg),var(--bg2))}
+.screen.active{opacity:1;transform:none;pointer-events:auto}.content{width:min(760px,100%);text-align:center;max-height:90svh;overflow:auto;padding:18px}
+.kicker{letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;font-weight:700;color:var(--blue);margin-bottom:22px}.title{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(3.8rem,13vw,8rem);font-weight:400;line-height:.9;margin:0}.subtitle{max-width:540px;margin:28px auto;color:var(--muted);font-size:1.05rem;line-height:1.8}
+.line{width:68px;height:1px;background:var(--blue);margin:30px auto}.btn{border:1px solid transparent;background:var(--blue);color:#06202a;border-radius:999px;padding:16px 28px;font-weight:700;letter-spacing:.04em;cursor:pointer;font-size:.95rem;transition:.25s}.btn:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(121,216,243,.22)}.btn.dark{background:transparent;color:var(--text);border-color:var(--line)}
+.back{position:fixed;top:22px;left:22px;z-index:20;background:transparent;border:0;color:var(--muted);cursor:pointer;font-size:.9rem;display:none}
+.progress{position:fixed;top:22px;right:22px;z-index:20;color:var(--muted);font-size:.75rem;letter-spacing:.1em}
+.lock{width:76px;height:76px;border:1px solid rgba(121,216,243,.45);border-radius:50%;display:grid;place-items:center;margin:0 auto 26px;font-size:1.8rem;box-shadow:0 0 45px rgba(121,216,243,.1)}
+.code{display:flex;justify-content:center;gap:10px;margin:28px auto}.code input{width:52px;height:64px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:1.6rem;text-align:center;outline:none}.code input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(121,216,243,.08)}
+.error{height:22px;color:#ff9f9f;font-size:.85rem;margin-top:12px}
+.choice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}.choice{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:30px 22px;text-align:left;cursor:pointer;color:var(--text);transition:.25s}.choice:hover{transform:translateY(-5px);border-color:rgba(121,216,243,.6);background:rgba(121,216,243,.1)}.choice-number{color:var(--blue);font-size:.75rem;letter-spacing:.15em}.choice h3{font-family:"DM Serif Display",Georgia,serif;font-size:2rem;font-weight:400;margin:18px 0 10px}.choice p{color:var(--muted);line-height:1.6;margin:0}.choice-arrow{margin-top:25px;color:var(--blue)}
+.story{max-width:640px;margin:auto;text-align:left;border-left:1px solid var(--line);padding-left:28px}.story-item{position:relative;padding:0 0 30px}.story-item:before{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--blue);left:-33px;top:6px;box-shadow:0 0 0 6px rgba(121,216,243,.08)}.date{font-size:.78rem;letter-spacing:.13em;color:var(--blue);text-transform:uppercase}.story h3{font-family:"DM Serif Display",Georgia,serif;font-size:1.7rem;font-weight:400;margin:7px 0}.story p{color:var(--muted);line-height:1.7;margin:0}
+.letter{background:rgba(255,255,255,.055);border:1px solid var(--line);border-radius:26px;padding:34px;text-align:left;max-width:650px;margin:30px auto}.letter p{color:#d7e6ea;line-height:1.9}.signature{font-family:"DM Serif Display",Georgia,serif;color:var(--blue);font-size:1.6rem;margin-top:25px}
+.memory-empty{border:1px dashed rgba(121,216,243,.35);border-radius:28px;padding:55px 25px;color:var(--muted);margin:30px auto;max-width:600px}.memory-icon{font-size:2rem;color:var(--blue);margin-bottom:14px}
+@media(max-width:600px){.choice-grid{grid-template-columns:1fr}.title{font-size:clamp(3.6rem,19vw,6rem)}.code input{width:46px;height:58px}.letter{padding:25px}.screen{padding:24px 16px}}
 </style>
 </head>
 <body>
 <div class="app">
-  <div class="dots" id="dots"></div>
+<button class="back" id="back">← Volver</button>
+<div class="progress" id="progress">01 / 06</div>
 
-  <section class="slide active">
-    <div class="content">
-      <div class="tag">Nuestro pequeño rincón 🩵</div>
-      <div class="heart">🩵</div>
-      <h1>Mi Mujer</h1>
-      <p>Todo empezó de una forma que ninguno de los dos esperaba.<br>Una conversación, unas bromas… y poco a poco apareciste tú.</p>
-    </div>
-  </section>
+<section class="screen active" id="home">
+<div class="content">
+<div class="kicker">Para Rosa</div>
+<h1 class="title">Nuestra<br>Historia</h1>
+<div class="line"></div>
+<p class="subtitle">Una pequeña historia que todavía estamos escribiendo. Un lugar solo para nosotros, para guardar lo que fuimos, lo que somos y todo lo que todavía nos queda por vivir.</p>
+<button class="btn" onclick="show('lock')">COMENZAR →</button>
+</div>
+</section>
 
-  <section class="slide">
-    <div class="content">
-      <div class="eyebrow">Capítulo 1</div>
-      <h2>Todo comenzó así 🩵</h2>
-      <p>Hay historias que no empiezan con un plan. Simplemente empiezan con una conversación… y, sin darte cuenta, esa persona comienza a ocupar un lugar especial en tu vida.</p>
-      <div class="timeline">
-        <div class="event"><div class="date">25 de julio de 2026</div><h3>Las primeras conversaciones 💬</h3><p>Las bromas, la confianza y esa conexión que empezó a aparecer poco a poco.</p></div>
-        <div class="event"><div class="date">27 de julio de 2026</div><h3>El comienzo de nosotros 🩵</h3><p>El día que empezó oficialmente nuestra historia.</p></div>
-        <div class="event"><div class="date">Ahora</div><h3>Seguimos escribiendo nuestra historia ✨</h3><p>Y todavía quedan muchos capítulos por vivir.</p></div>
-      </div>
-    </div>
-  </section>
+<section class="screen" id="lock">
+<div class="content">
+<div class="lock">⌑</div>
+<div class="kicker">Acceso protegido</div>
+<h2 class="title" style="font-size:clamp(3rem,10vw,5.5rem)">Solo para ti</h2>
+<p class="subtitle">Introduce el código para desbloquear nuestra historia.</p>
+<div class="code">
+<input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric">
+</div>
+<button class="btn" onclick="unlock()">DESBLOQUEAR</button>
+<div class="error" id="error"></div>
+</div>
+</section>
 
-  <section class="slide">
-    <div class="content">
-      <div class="eyebrow">Nuestro tiempo</div>
-      <h2>Desde que empezó lo nuestro 🩵</h2>
-      <div class="counter">
-        <div class="unit"><span id="days" class="num">0</span><span class="label">Días</span></div>
-        <div class="unit"><span id="hours" class="num">0</span><span class="label">Horas</span></div>
-        <div class="unit"><span id="minutes" class="num">0</span><span class="label">Minutos</span></div>
-        <div class="unit"><span id="seconds" class="num">0</span><span class="label">Segundos</span></div>
-      </div>
-      <p>Cada segundo es una pequeña parte de nuestra historia. 🩵</p>
-    </div>
-  </section>
+<section class="screen" id="menu">
+<div class="content">
+<div class="kicker">Elige un camino</div>
+<h2 class="title" style="font-size:clamp(3.2rem,10vw,6rem)">Descúbrenos</h2>
+<div class="choice-grid">
+<button class="choice" onclick="show('memories')"><div class="choice-number">01 — RECUERDOS</div><h3>Nuestros recuerdos</h3><p>Un lugar preparado para todos los momentos que iremos viviendo juntos.</p><div class="choice-arrow">EXPLORAR →</div></button>
+<button class="choice" onclick="show('story')"><div class="choice-number">02 — HISTORIA</div><h3>Nuestra historia</h3><p>Cómo empezó todo y los primeros capítulos de lo nuestro.</p><div class="choice-arrow">DESCUBRIR →</div></button>
+</div>
+<button class="btn dark" style="margin-top:26px" onclick="show('letter')">LEER LA CARTA 💌</button>
+</div>
+</section>
 
-  <section class="slide">
-    <div class="content">
-      <div class="eyebrow">Para ti</div>
-      <h2>Mi Boba 🩵</h2>
-      <div class="letter">
-        <p class="opening">Rosa, mi Boba…</p>
-        <p>Quizás todavía nos quedan muchas cosas por vivir, muchos recuerdos por crear y muchos momentos que todavía ni siquiera podemos imaginar.</p>
-        <p>Pero quería crear este pequeño rincón para ti. Un lugar que guardase una parte de nuestra historia y que, con el tiempo, podamos ir llenando de todo lo que vivamos juntos.</p>
-        <p>Ahora mismo todavía hay distancia, pero también hay ganas de que llegue el momento de poder compartir recuerdos de verdad.</p>
-        <p><strong>Mi vida. Mi Boba. Mi Mujer. 🩵</strong></p>
-      </div>
-    </div>
-  </section>
+<section class="screen" id="memories">
+<div class="content">
+<div class="kicker">Nuestros recuerdos</div>
+<h2 class="title" style="font-size:clamp(3rem,10vw,5.8rem)">Todavía<br>queda mucho</h2>
+<div class="memory-empty"><div class="memory-icon">✦</div><strong>Aquí iremos guardando nuestros recuerdos.</strong><p>Cuando tengáis fotos juntos, podremos convertir esta pantalla en un álbum bonito y privado.</p></div>
+<button class="btn" onclick="show('menu')">VOLVER AL MENÚ</button>
+</div>
+</section>
 
-  <section class="slide">
-    <div class="content">
-      <div class="eyebrow">Lo que nos espera</div>
-      <h2>Futuros recuerdos 📸</h2>
-      <div class="memories">
-        <div class="memory"><i>📸</i><h3>Nuestra primera foto juntos</h3><p>Algún día estará aquí.</p></div>
-        <div class="memory"><i>🤍</i><h3>Nuestro primer encuentro</h3><p>Un recuerdo que todavía está por llegar.</p></div>
-        <div class="memory"><i>🗺️</i><h3>Nuestros lugares</h3><p>Todos los sitios que descubriremos juntos.</p></div>
-        <div class="memory"><i>✨</i><h3>Todo lo demás</h3><p>Porque nuestra historia todavía se está escribiendo.</p></div>
-      </div>
-    </div>
-  </section>
+<section class="screen" id="story">
+<div class="content">
+<div class="kicker">Nuestro comienzo</div>
+<h2 class="title" style="font-size:clamp(3rem,10vw,5.8rem)">La historia<br>empieza aquí</h2>
+<div class="story">
+<div class="story-item"><div class="date">25 de julio de 2026</div><h3>Las primeras conversaciones</h3><p>Las bromas, la confianza y esa conexión que empezó a aparecer poco a poco.</p></div>
+<div class="story-item"><div class="date">27 de julio de 2026</div><h3>El comienzo de nosotros</h3><p>El día que empezó oficialmente nuestra historia.</p></div>
+<div class="story-item"><div class="date">Ahora</div><h3>Seguimos escribiendo</h3><p>Y todavía quedan muchos capítulos, recuerdos y momentos por vivir.</p></div>
+</div>
+<button class="btn" onclick="show('letter')">CONTINUAR →</button>
+</div>
+</section>
 
-  <section class="slide">
-    <div class="content">
-      <div class="heart">🩵</div>
-      <div class="eyebrow">Una última cosa</div>
-      <h2>Amorcitoo, pulsa aquí</h2>
-      <button class="btn" onclick="showSecret()">Tengo algo que decirte</button>
-      <div class="secret" id="secret">
-        <p>No sé exactamente cómo será todo lo que nos espera.</p>
-        <p>Pero sí sé que quiero seguir descubriéndolo contigo.</p>
-        <p><strong>Esta es solo la primera página de todos los recuerdos que espero que podamos crear juntos. 🩵</strong></p>
-      </div>
-    </div>
-  </section>
-
-  <div class="controls">
-    <button class="btn secondary" id="prev">← Atrás</button>
-    <button class="btn" id="next">Continuar →</button>
-  </div>
+<section class="screen" id="letter">
+<div class="content">
+<div class="kicker">Una carta para ti</div>
+<h2 class="title" style="font-size:clamp(3rem,10vw,5.8rem)">Mi Mujer</h2>
+<div class="letter">
+<p><strong>Rosa,</strong></p>
+<p>Quería crear este pequeño lugar para ti. Un rincón donde nuestra historia pueda quedarse guardada y donde, con el tiempo, podamos añadir todos los recuerdos que todavía nos esperan.</p>
+<p>Quizás todavía nos quedan muchísimas cosas por vivir, pero precisamente eso es lo bonito: que nuestra historia todavía se está escribiendo.</p>
+<p>Espero que algún día podamos mirar esta página y recordar que todo empezó aquí.</p>
+<p>Mi vida. Mi Mujer. 🩵</p>
+<div class="signature">— Abraham</div>
+</div>
+<button class="btn" onclick="show('home')">VOLVER AL PRINCIPIO ↺</button>
+</div>
+</section>
 </div>
 
 <script>
-const slides=[...document.querySelectorAll('.slide')];
-const dots=document.querySelector('#dots');
-let current=0;
-slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');dots.appendChild(d);});
-const dotEls=[...dots.children];
-function goTo(n){
-  if(n<0||n>=slides.length)return;
-  slides[current].classList.remove('active');
-  slides[current].classList.toggle('exit-left',n>current);
-  const old=current; current=n;
-  setTimeout(()=>slides[old].classList.remove('exit-left'),560);
-  slides[current].classList.add('active');
-  dotEls.forEach((d,i)=>d.classList.toggle('active',i===current));
-  document.querySelector('#prev').style.visibility=current===0?'hidden':'visible';
-  document.querySelector('#next').textContent=current===slides.length-1?'Volver al inicio ↺':'Continuar →';
+const screens=[...document.querySelectorAll('.screen')];
+const progress=document.querySelector('#progress');
+const back=document.querySelector('#back');
+const order=['home','lock','menu','memories','story','letter'];
+let current='home',previous=[];
+function show(id,push=true){
+ if(push&&current!==id)previous.push(current);
+ screens.forEach(s=>s.classList.toggle('active',s.id===id));
+ current=id; progress.textContent=String(order.indexOf(id)+1).padStart(2,'0')+' / 06';
+ back.style.display=(id==='home'||id==='lock')?'none':'block';
 }
-document.querySelector('#next').onclick=()=>current===slides.length-1?goTo(0):goTo(current+1);
-document.querySelector('#prev').onclick=()=>goTo(current-1);
-document.querySelector('#prev').style.visibility='hidden';
-let touchStart=0;
-document.addEventListener('touchstart',e=>touchStart=e.changedTouches[0].screenX,{passive:true});
-document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-touchStart;if(Math.abs(dx)>55)goTo(dx<0?current+1:current-1)},{passive:true});
-document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')goTo(current+1);if(e.key==='ArrowLeft')goTo(current-1)});
-function showSecret(){document.querySelector('#secret').style.display='block'}
-const start=new Date('2026-07-27T00:00:00');
-function updateCounter(){let d=Math.max(0,Date.now()-start);const days=Math.floor(d/86400000);d%=86400000;const hours=Math.floor(d/3600000);d%=3600000;const minutes=Math.floor(d/60000);d%=60000;const seconds=Math.floor(d/1000);daysEl.textContent=days;hoursEl.textContent=hours;minutesEl.textContent=minutes;secondsEl.textContent=seconds;}
-const daysEl=document.querySelector('#days'),hoursEl=document.querySelector('#hours'),minutesEl=document.querySelector('#minutes'),secondsEl=document.querySelector('#seconds');
-updateCounter();setInterval(updateCounter,1000);
+back.onclick=()=>{const p=previous.pop()||'menu';show(p,false)};
+const inputs=[...document.querySelectorAll('.code input')];
+inputs.forEach((input,i)=>{
+ input.addEventListener('input',()=>{input.value=input.value.replace(/\D/g,'');if(input.value&&inputs[i+1])inputs[i+1].focus()});
+ input.addEventListener('keydown',e=>{if(e.key==='Backspace'&&!input.value&&inputs[i-1])inputs[i-1].focus()});
+});
+function unlock(){
+ const code=inputs.map(i=>i.value).join('');
+ if(code==='2707'){document.querySelector('#error').textContent='';show('menu')}
+ else{document.querySelector('#error').textContent='Código incorrecto. Inténtalo otra vez.';inputs.forEach(i=>i.value='');inputs[0].focus();}
+}
 </script>
 </body>
 </html>

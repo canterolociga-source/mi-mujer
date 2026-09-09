@@ -212,9 +212,9 @@ function go(id,save=true){
  document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));
  current=id;
  progress.textContent=String(Math.min(ids.indexOf(id)+1,6)).padStart(2,'0')+' / 06';
- back.style.display=(id==='home'||id==='lock')?'none':'block';
+ back.style.display=(id==='home')?'none':'block';
 }
-back.onclick=()=>{const prev=history.pop()||'menu';go(prev,false)};
+back.onclick=()=>{const prev=history.pop()||'home';go(prev,false)};
 function updateDots(){document.querySelectorAll('.pin-dot').forEach((d,i)=>d.classList.toggle('filled',i<pin.length))}
 function press(n){
  if(pin.length>=4)return;

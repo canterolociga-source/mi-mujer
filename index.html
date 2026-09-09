@@ -29,6 +29,9 @@
 
 /* CONTENT */
 .empty-box{max-width:600px;margin:28px auto;border:1px dashed rgba(120,216,243,.35);border-radius:26px;padding:46px 24px;color:var(--muted);line-height:1.7}.story{max-width:680px;margin:30px auto;text-align:left;border-left:1px solid var(--line);padding-left:26px}.chat-section{max-width:680px;margin:38px auto;text-align:left}.chapter-title{text-align:center;font-family:"DM Serif Display",Georgia,serif;font-size:clamp(2rem,6vw,3rem);font-weight:400;margin:0 0 10px}.chapter-date{text-align:center;color:var(--blue);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:24px}.chat{display:flex;flex-direction:column;gap:10px;margin:20px 0 32px}.bubble{max-width:82%;padding:13px 16px;border-radius:18px;border:1px solid var(--line);line-height:1.55;font-size:.92rem}.bubble.them{align-self:flex-start;background:rgba(255,255,255,.075);border-bottom-left-radius:5px}.bubble.me{align-self:flex-end;background:rgba(120,216,243,.13);border-color:rgba(120,216,243,.22);border-bottom-right-radius:5px}.who{display:block;font-size:.66rem;font-weight:700;letter-spacing:.1em;color:var(--blue);margin-bottom:5px}.chapter-note{text-align:center;color:var(--muted);font-size:.88rem;line-height:1.7;margin:0 auto 26px;max-width:560px}.story-item{position:relative;padding-bottom:28px}.story-item:before{content:"";position:absolute;width:9px;height:9px;background:var(--blue);border-radius:50%;left:-31px;top:5px;box-shadow:0 0 0 6px rgba(120,216,243,.08)}.date{font-size:.72rem;letter-spacing:.14em;color:var(--blue);text-transform:uppercase}.story h3{font-family:"DM Serif Display",Georgia,serif;font-size:1.6rem;font-weight:400;margin:7px 0}.story p{margin:0;color:var(--muted);line-height:1.7}.letter{max-width:640px;margin:27px auto;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:30px;text-align:left}.letter p{line-height:1.85;color:#d6e6ea}.signature{font-family:"DM Serif Display",Georgia,serif;font-size:1.5rem;color:var(--blue);margin-top:22px}
+
+/* RECUERDOS */
+.memories-content{width:min(1100px,100%)}.memory-actions{display:flex;justify-content:center;margin:28px 0 18px}.upload-memory-btn{display:flex;align-items:center;gap:14px;padding:15px 24px;border-radius:18px;cursor:pointer;background:rgba(120,216,243,.12);border:1px solid rgba(120,216,243,.45);color:#eaf9ff;transition:.25s}.upload-memory-btn:hover{transform:translateY(-3px);background:rgba(120,216,243,.2);box-shadow:0 12px 35px rgba(120,216,243,.12)}.upload-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;font-size:28px;background:var(--blue);color:#071b24}.upload-memory-btn strong{display:block;font-size:16px}.upload-memory-btn small{display:block;margin-top:3px;opacity:.65}.upload-status{text-align:center;min-height:24px;margin-bottom:18px;color:var(--blue)}.memories-gallery{width:100%;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:22px auto 35px}.memory-card{position:relative;overflow:hidden;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);aspect-ratio:1/1}.memory-card img,.memory-card video{width:100%;height:100%;object-fit:cover;display:block}.empty-memories{grid-column:1/-1;padding:48px 20px;text-align:center;border:1px dashed rgba(120,216,243,.28);border-radius:24px}.empty-icon{font-size:42px;margin-bottom:15px}.empty-memories h3{margin:0 0 10px;font-family:"DM Serif Display",Georgia,serif;font-size:26px}.empty-memories p{opacity:.65;max-width:500px;margin:auto}@media(max-width:520px){.memories-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
 </style>
 </head>
 <body>
@@ -87,11 +90,26 @@
 </div></section>
 
 <!-- 05 RECUERDOS -->
-<section id="memories" class="screen"><div class="content">
-<div class="kicker">Nuestros recuerdos</div>
-<h2 class="title" style="font-size:clamp(3rem,10vw,5.8rem)">Lo mejor<br>está por llegar</h2>
-<div class="empty-box"><strong>Aquí iremos guardando nuestros recuerdos 🩵</strong><br>Cuando tengáis fotos juntos, esta pantalla se convertirá en vuestra galería privada.</div>
-<button class="btn ghost" onclick="go('menu')">VOLVER AL MENÚ</button>
+<section id="memories" class="screen"><div class="content memories-content">
+<div class="kicker">Nuestros recuerdos 🩵</div>
+<h2 class="title" style="font-size:clamp(3rem,10vw,5.8rem)">Todos nuestros<br>momentos</h2>
+<p class="subtitle">Aquí iremos guardando cada foto, cada vídeo y cada momento especial de nuestra historia juntos 🩵</p>
+<div class="memory-actions">
+<label for="memoryUpload" class="upload-memory-btn">
+<span class="upload-icon">＋</span>
+<span><strong>Subir recuerdo</strong><small>Foto o vídeo</small></span>
+</label>
+<input type="file" id="memoryUpload" accept="image/*,video/*" multiple hidden>
+</div>
+<div id="uploadStatus" class="upload-status"></div>
+<div id="memoriesGallery" class="memories-gallery">
+<div class="empty-memories" id="emptyMemories">
+<div class="empty-icon">🩵</div>
+<h3>Aún no hay recuerdos aquí</h3>
+<p>El primer recuerdo de nuestra historia está esperando ser guardado.</p>
+</div>
+</div>
+<button class="btn ghost" onclick="go('menu')">← VOLVER AL MENÚ</button>
 </div></section>
 
 <!-- 06 HISTORIA -->
@@ -99,7 +117,6 @@
 <div class="kicker">Nuestra historia real</div>
 <h2 class="title" style="font-size:clamp(2.8rem,9vw,5.2rem)">Así empezó<br>todo</h2>
 <p class="subtitle">Una parte de nuestra historia contada con algunos de nuestros primeros mensajes 🩵</p>
-
 <div class="chat-section">
 <h3 class="chapter-title">Capítulo 1 — Todo empezó aquí</h3>
 <div class="chapter-date">25 de julio de 2026 · 16:12</div>
@@ -114,7 +131,6 @@
 <div class="bubble them"><span class="who">MI BOBA 🩵</span>tonto que me has asustado</div>
 </div>
 <p class="chapter-note">Y así, entre confusión y bromas, empezó una conversación que ninguno de los dos imaginaba hasta dónde podía llegar. 🩵</p>
-
 <h3 class="chapter-title">Capítulo 2 — Conociéndonos</h3>
 <div class="chapter-date">25 de julio de 2026</div>
 <div class="chat">
@@ -123,7 +139,6 @@
 <div class="bubble me"><span class="who">TÚ</span>me has caído bien, tenemos cosas en común, y siendo te sincero, me gustaría conocerte más, sber de ti, tú día a día, tus aficiones</div>
 </div>
 <p class="chapter-note">Después de las primeras bromas llegó una conversación de verdad. Empezamos a conocernos poco a poco.</p>
-
 <h3 class="chapter-title">Capítulo 3 — Nace «Mi Boba 🩵»</h3>
 <div class="chapter-date">25 de julio de 2026</div>
 <div class="chat">
@@ -137,7 +152,6 @@
 <div class="bubble me"><span class="who">TÚ</span>eres mi reina, mi princesa, pero creo que es tipico, y me gustas ser diferente</div>
 </div>
 <p class="chapter-note">Y sin saberlo, nació uno de los apodos que acabaría formando parte de nuestra historia. 🩵</p>
-
 <h3 class="chapter-title">Capítulo 4 — La primera noche</h3>
 <div class="chapter-date">25 → 26 de julio de 2026</div>
 <div class="chat">
@@ -147,7 +161,6 @@
 <div class="bubble them"><span class="who">MI BOBA 🩵</span>Ainss más mono 🥹🥹❤️</div>
 <div class="bubble them"><span class="who">MI BOBA 🩵</span>Hasta mañana mi niño</div>
 </div>
-
 <h3 class="chapter-title">Capítulo 5 — Un nuevo día</h3>
 <div class="chapter-date">26 de julio de 2026 · 06:12</div>
 <div class="chat">
@@ -158,7 +171,6 @@
 <div class="bubble them"><span class="who">MI BOBA 🩵</span>Y yoo mi vida</div>
 </div>
 <p class="chapter-note">Los buenos días, los apodos y el cariño empezaron a formar parte natural de nuestras conversaciones. 🩵</p>
-
 <h3 class="chapter-title">Capítulo 6 — 27 · 07 · 2026</h3>
 <div class="chapter-date">El comienzo de nosotros 🩵</div>
 <div class="chat">
@@ -171,11 +183,9 @@
 <div class="bubble them"><span class="who">MI BOBA 🩵</span>Guapito mío</div>
 </div>
 <p class="chapter-note"><strong>Y desde ese día, el 27 de julio de 2026, empezó oficialmente nuestra historia. 🩵</strong></p>
-
 <h3 class="chapter-title">Y esto solo es el principio</h3>
 <p class="chapter-note">Esta sección irá creciendo con nosotros. Nuevos mensajes, nuevas fechas, nuevas fotos y nuevos recuerdos. Porque nuestra historia todavía se está escribiendo, Mi Vida 🩵</p>
 </div>
-
 <button class="btn ghost" onclick="go('menu')">VOLVER AL MENÚ</button>
 </div></section>
 
@@ -239,6 +249,65 @@ function tick(){
  document.querySelector('#seconds').textContent=String(s).padStart(2,'0');
 }
 tick();setInterval(tick,1000);
+
+/* CLOUDINARY — NUESTROS RECUERDOS */
+const CLOUD_NAME='yiffjzaq';
+const UPLOAD_PRESET='nuestros_recuerdos';
+const memoryUpload=document.getElementById('memoryUpload');
+const uploadStatus=document.getElementById('uploadStatus');
+const memoriesGallery=document.getElementById('memoriesGallery');
+const emptyMemories=document.getElementById('emptyMemories');
+
+memoryUpload.addEventListener('change',async()=>{
+ const files=[...memoryUpload.files];
+ if(!files.length)return;
+ for(const file of files){
+  uploadStatus.textContent='Subiendo '+file.name+'... 🩵';
+  const formData=new FormData();
+  formData.append('file',file);
+  formData.append('upload_preset',UPLOAD_PRESET);
+  try{
+   const response=await fetch('https://api.cloudinary.com/v1_1/'+CLOUD_NAME+'/auto/upload',{method:'POST',body:formData});
+   const data=await response.json();
+   if(!response.ok)throw new Error(data.error?.message||'Error al subir');
+   addMemoryToGallery(data.secure_url,data.resource_type);
+   saveMemory({url:data.secure_url,type:data.resource_type,createdAt:Date.now()});
+   uploadStatus.textContent='¡Recuerdo guardado! 🩵';
+  }catch(error){
+   console.error(error);
+   uploadStatus.textContent='No se ha podido subir este recuerdo.';
+  }
+ }
+ memoryUpload.value='';
+});
+
+function addMemoryToGallery(url,type){
+ if(emptyMemories)emptyMemories.style.display='none';
+ const card=document.createElement('div');
+ card.className='memory-card';
+ if(type==='video'){
+  const video=document.createElement('video');
+  video.src=url;video.controls=true;video.preload='metadata';
+  card.appendChild(video);
+ }else{
+  const image=document.createElement('img');
+  image.src=url;image.alt='Nuestro recuerdo';image.loading='lazy';
+  card.appendChild(image);
+ }
+ memoriesGallery.appendChild(card);
+}
+
+function saveMemory(memory){
+ const saved=JSON.parse(localStorage.getItem('nuestrosRecuerdos')||'[]');
+ saved.push(memory);
+ localStorage.setItem('nuestrosRecuerdos',JSON.stringify(saved));
+}
+
+function loadMemories(){
+ const saved=JSON.parse(localStorage.getItem('nuestrosRecuerdos')||'[]');
+ saved.forEach(memory=>addMemoryToGallery(memory.url,memory.type));
+}
+loadMemories();
 </script>
 </body>
 </html>
